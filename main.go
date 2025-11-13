@@ -5,10 +5,13 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/nafiul/api_tutorial/initializers"
+	"github.com/nafiul/api_tutorial/migrate"
 )
 
 func init() {
 	initializers.LoadEnvVariables()
+	initializers.ConnectDatabase()
+	migrate.MigrateDB(initializers.DB)
 }
 
 func main() {
